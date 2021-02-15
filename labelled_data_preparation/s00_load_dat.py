@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 import os
-from data_preparation.utils.radpath import RadPath
+from utils.radpath import RadPath
 import numpy as np
 
 

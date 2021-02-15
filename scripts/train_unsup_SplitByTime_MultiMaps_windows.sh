@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 export MXNET_ENFORCE_DETERMINISM=1
-#export MXNET_BACKWARD_DO_MIRROR=1  # trade-off memory usage -  speed
 export MXNET_CUDNN_AUTOTUNE_DEFAULT=0
-#export MXNET_ENABLE_GPU_P2P=0
-#export MXNET_CUDA_TENSOR_OP_MATH_ALLOW_CONVERSION=1
 export CUDA_VISIBLE_DEVICES=${1}
 
-suffix=switch_to_ENUC_v4a  # uniform_label_all_channels  # increasing_augment
-#suffix=ClassificationLoss1/8  # uniform_label_all_channels
-#suffix=ShapeAug  # uniform_label_all_channels
+suffix=switch_to_ENUC_v4b
 batch_size=8
 
 #lr_scheduler=cosine
@@ -16,9 +11,7 @@ max_lr=1e-3
 min_lr=7e-4
 warmup_begin_lr=1e-5
 warmup_steps=200
-#cycle_length=600
 cooldown_length=200
-#total_iter=$((warmup_steps + cycle_length + cooldown_length))
 
 lr_scheduler=one_cycle
 max_lr=1e-3
@@ -37,14 +30,10 @@ total_iter=2008 #2508  # 2508 # 1808 #6508 #908 # 2008
 inc_fraction=.9
 cycle_length_decay=.9  # .93
 cycle_magnitude_decay=.95
-#cooldown_length=100
-#finish_lr=1e-8
 
-#lr_scheduler=factor
-base_lr=1e-4 #3e-4
+base_lr=1e-4
 lr_factor=.1
 lr_step=9999
-#total_iter=2208
 
 optimizer=adam
 gid=0,1
@@ -63,23 +52,16 @@ iter_activate_unsup=0
 
 growth_rate=4
 loss_type=l2
-#min_lr=1e-5
-#runtime=1_ExpandDataset_2
 folder=ImprovedSemi_PostMICCAI_5
-#runtime=1_tsa_9by10_longer_Normal.1
 runtime=2d
-#runtime=with_pseudo_200d_lrml1_rsquared
 
 n_channels_raw_inp=8
 train_perc=0.60
-#density_type=${3}  #EESL  #ENSL #EPI
-#dataset_file=mri_density_${n_channels_raw_inp}channels_adjacent
-#caseID_file=caseID_by_time_${train_perc}
 dataset_file=mri_density_${n_channels_raw_inp}channels
 caseID_file=caseID_by_time_${train_perc}
 
 network=drnn  # drnn unetpp unet # deeplabv3plus
-cycle_length=100 #100
+cycle_length=100
 lambda_D=0
 margin=0
 lambda_C=0
@@ -89,7 +71,7 @@ root=1
 margin=0
 lambda_CL=0
 lambda_D=0
-stsa_rat_int=9  # 9
+stsa_rat_int=9
 for network in ${2}
 do
     for density_type in EESL # ENSL
@@ -98,10 +80,10 @@ do
         do
             for lambda_C in 0 #1
             do
-                for num_unsup in 0  # 200
+                for num_unsup in 200  # 200
 #                for num_unsup in 0 200 #100 200
                 do
-                    for seed in 63 # {50..70}  # 11 3018 1216 102 1008 1022 1111 1118 1216  # 102 115 118 120 {120..150}
+                    for seed in {100..150} # 63
                     # 128 135 140 for NUC
 #                    for seed in 234 #213 219 227 247 114 234
                     do

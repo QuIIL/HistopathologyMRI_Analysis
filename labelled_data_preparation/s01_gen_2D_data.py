@@ -77,5 +77,5 @@ class Generate2D:
 if __name__ == "__main__":
     generator = Generate2D(None)
     # generator = Generate2D('EPI')
-    generator.gen_2d(dir_out=r'../inputs', get_unsup_data=True)
+    generator.gen_2d(dir_out=r'../inputs', get_unsup_data=False)
     # generator.print_slice_id()
