@@ -38,7 +38,7 @@ tensorflow==1.14.0
 ## Usage Guideline
 
 - `scripts/train.sh` will call `train_PixUDA_MultiMaps.py` to train a semi-supervised deep learning model using `mri_density_8channels_EESL.npy` and `mri_density_5channels_unsup_200subs_cleaned.npy` in `inputs` folder (available offline - backup disk and server 63@SejongUniversity).
-- `scripts/infer_unlablled.sh` will call `inference.py` to predict density maps for data in `unlabelled_data_preparation/MRI_Numpy` folder (available offline - backup disk and server 63@SejongUniversity). Predicted outputs will be stored in `results/run_id/experiment_name` in Numpy format.
+- `scripts/predict.sh` will call `inference.py` to predict density maps for data in `unlabelled_data_preparation/MRI_Numpy` folder (available offline - backup disk and server 63@SejongUniversity). Predicted outputs will be stored in `results/run_id/experiment_name` in Numpy format.
 - `labelled_data_preparation` contains the codes for extracting MRI images/density maps/prostate mask/ROIs from raw data
 - `unlabelled_data_preparation` contains the codes for extracting unlabelled MRI/prostate mask/Biopsy targets from matlab/VOI files. Additionally, the codes with prefix 's03' in this folder are used to extract the averaged density at multiple sizes of ROIs and store them in excel files. Merging those files will result in `RadPath_AveragedDensity_EESL.xlsx`.
 - `analyze_report_intensity_density_V3.ipynb` plots and analyzes `RadPath_AveragedDensity_EESL.xlsx`. `utils_analysis.py` contains the codes for statistical analysis.
