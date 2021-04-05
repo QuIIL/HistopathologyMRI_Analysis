@@ -1,4 +1,4 @@
-# A non-invasive and quantitative histopathology analysis of prostate cancer in multiparametric magnetic resonance imaging
+# Semi-supervised deep learning enables quantitative histopathology analysis in multiparametric magnetic resonance imaging
 This repository contains the codes for 
 - Extracting data and ROIs from the raw dataset
 - Training a semi-supervised deep learning models to predict different types of tissue density from multi-parametric prostate MRI
