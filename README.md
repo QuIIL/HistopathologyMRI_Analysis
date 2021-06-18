@@ -50,6 +50,7 @@ If any part of this code is used, please give appropriate citation to our paper.
 ## Authors
 
 * [Nguyen Nhat Minh To](https://github.com/minhto2802)
+* [Jin Tae Kwak](https://github.com/JinTaeKwak) 
 
 ## Acknowledgement
 
